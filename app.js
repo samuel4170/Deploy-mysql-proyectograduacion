@@ -6,6 +6,7 @@ const app = express();
 
 const { PORT } = require("./src/config"); // Ruta corregida para importar la configuración
 
+//dep
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
