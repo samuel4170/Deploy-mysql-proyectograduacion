@@ -1,10 +1,10 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const sequelize = require("./src/db"); // Ruta corregida para importar sequelize
+const sequelize = require("./db"); // Ruta corregida para importar sequelize
 const app = express();
 
-const { PORT } = require("../config/db.config.js"); // Ruta corregida para importar la configuración
+const { PORT } = require("./config/db.config"); // Ruta corregida para importar la configuración
 
 //dep
 app.use(cors());
@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Importa los modelos y sincroniza la base de datos
-const db = require("./src/models");
+const db = require("./models");
 db.sequelize.sync()
   .then(() => {
     console.log("Synced db.");
@@ -22,23 +22,23 @@ db.sequelize.sync()
   });
 
 // Rutas de Pacientes
-require("./src/routers/paciente.routes")(app);
+require("./routers/paciente.routes")(app);
 // Rutas de Medicos
-require("./src/routers/medico.routes")(app);
+require("./routers/medico.routes")(app);
 // Rutas de Citas
-require("./src/routers/cita.routes")(app);
+require("./routers/cita.routes")(app);
 // Rutas de Historial Medico
-require("./src/routers/historialmedico.routes")(app);
+require("./routers/historialmedico.routes")(app);
 // Rutas de Facturas
-require("./src/routers/factura.routes")(app);
+require("./routers/factura.routes")(app);
 // Rutas de Recepcionistas
-require("./src/routers/recepcionista.routes")(app);
+require("./routers/recepcionista.routes")(app);
 // Rutas de Administradores
-require("./src/routers/administrador.routes")(app);
+require("./routers/administrador.routes")(app);
 // Rutas de horario
-require("./src/routers/horario.routes")(app);
+require("./routers/horario.routes")(app);
 // Rutas de especialidades
-require("./src/routers/especialidad.routes")(app);
+require("./routers/especialidad.routes")(app);
 
 // Establece el puerto y escucha las solicitudes
 
