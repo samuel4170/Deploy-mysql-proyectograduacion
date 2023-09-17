@@ -3,6 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
+const { PORT } = require("../src/config.js");
+
 // var corsOptions = {
 //   origin: "http://localhost:8080"
 // };
@@ -16,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //const db = require("./app/models");
-const db = require("./app/models");
+const db = require(".//models");
 
 db.sequelize.sync()
   .then(() => {
@@ -32,28 +34,27 @@ app.get("/", (req, res) => {
 });
 
 // Rutas de Pacientes
-require("./app/routers/paciente.routes")(app);
+require(".//routers/paciente.routes")(app);
 // Rutas de Medicos
-require("./app/routers/medico.routes")(app);
+require(".//routers/medico.routes")(app);
 // Rutas de Citas
-require("./app/routers/cita.routes")(app);
+require(".//routers/cita.routes")(app);
 // Rutas de Historial Medico
-require("./app/routers/historialmedico.routes")(app);
+require(".//routers/historialmedico.routes")(app);
 // Rutas de Facturas
-require("./app/routers/factura.routes")(app);
+require(".//routers/factura.routes")(app);
 // Rutas de Recepcionistas
-require("./app/routers/recepcionista.routes")(app);
+require(".//routers/recepcionista.routes")(app);
 // Rutas de Administradores
-require("./app/routers/administrador.routes")(app);
+require(".//routers/administrador.routes")(app);
 // Rutas de horario
-require("./app/routers/horario.routes")(app);
+require(".//routers/horario.routes")(app);
 // Rutas de especialidades
-require("./app/routers/especialidad.routes")(app);
+require(".//routers/especialidad.routes")(app);
 
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
+app.listen(8080 || process.env.PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
