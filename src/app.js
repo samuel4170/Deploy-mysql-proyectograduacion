@@ -1,26 +1,17 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const sequelize = require("../src/db");
+const sequelize = require("./db"); // Ruta corregida para importar sequelize
 const app = express();
 
-const { PORT } = require("../src/config.js");
-
-// var corsOptions = {
-//   origin: "http://localhost:8080"
-// };
+const { PORT } = require("./config"); // Ruta corregida para importar la configuración
 
 app.use(cors());
-
-// parse requests of content-type - application/json
 app.use(express.json());
-
-// parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-//const db = require("./app/models");
-const db = require(".//models");
-
+// Importa los modelos y sincroniza la base de datos
+const db = require("./models");
 db.sequelize.sync()
   .then(() => {
     console.log("Synced db.");
@@ -29,34 +20,26 @@ db.sequelize.sync()
     console.log("Fallo al conectar a la db: " + err.message);
   });
 
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome samuel" });
-});
-
 // Rutas de Pacientes
-require(".//routers/paciente.routes")(app);
+require("./routers/paciente.routes")(app);
 // Rutas de Medicos
-require(".//routers/medico.routes")(app);
+require("./routers/medico.routes")(app);
 // Rutas de Citas
-require(".//routers/cita.routes")(app);
+require("./routers/cita.routes")(app);
 // Rutas de Historial Medico
-require(".//routers/historialmedico.routes")(app);
+require("./routers/historialmedico.routes")(app);
 // Rutas de Facturas
-require(".//routers/factura.routes")(app);
+require("./routers/factura.routes")(app);
 // Rutas de Recepcionistas
-require(".//routers/recepcionista.routes")(app);
+require("./routers/recepcionista.routes")(app);
 // Rutas de Administradores
-require(".//routers/administrador.routes")(app);
+require("./routers/administrador.routes")(app);
 // Rutas de horario
-require(".//routers/horario.routes")(app);
+require("./routers/horario.routes")(app);
 // Rutas de especialidades
-require(".//routers/especialidad.routes")(app);
+require("./routers/especialidad.routes")(app);
 
-
-// set port, listen for requests
-app.listen(8080 || process.env.PORT, () => {
+// Establece el puerto y escucha las solicitudes
+app.listen(PORT || 8080, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
-
-
