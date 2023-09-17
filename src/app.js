@@ -4,7 +4,7 @@ const cors = require("cors");
 const sequelize = require("./db"); // Ruta corregida para importar sequelize
 const app = express();
 
-const { PORT } = require("./config"); // Ruta corregida para importar la configuración
+const { PORT } = require("./config/db.config"); // Ruta corregida para importar la configuración
 
 //dep
 app.use(cors());
