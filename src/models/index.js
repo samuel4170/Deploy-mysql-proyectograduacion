@@ -2,20 +2,19 @@ const dbConfig = require("../config/db.config.js");
 const Sequelize = require("sequelize");
 
 const sequelize = new Sequelize(
-  process.env.DB_DATABASE,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
-  {
-    DB_HOST: process.env.DB_HOST,
-    dialect: dbConfig.dialect,
-    operatorsAliases: 0,
+  module.exports = {
+    DB_HOST: process.env.DB_HOST || "localhost",
+    DB_USER: process.env.DB_USER || "root",
+    DB_PASSWORD: process.env.DB_PASSWORD || "1234",
+    DB_DATABASE: process.env.DB_DATABASE || "Clinica",
+    DB_PORT: process.env.DB_PORT || 3306, // El puerto predeterminado de MySQL es 3306
+    dialect: "mysql", // Cambiar el dialecto de mssql a mysql
     pool: {
-      max: dbConfig.pool.max,
-      min: dbConfig.pool.min,
-      acquire: dbConfig.pool.acquire,
-      idle: dbConfig.pool.idle
-    }
-    //sa
+      max: 5,
+      min: 0,
+      acquire: 60000,
+      idle: 10000,
+    },
   }
 );
 
