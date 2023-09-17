@@ -7,7 +7,7 @@ module.exports = {
   password: process.env.DB_PASSWORD || "1234",
   database: process.env.DB_DATABASE || "Clinica",
   port: process.env.DB_PORT || 3306,
-  dialect: "mysql", // Agrega esta línea
+  dialect: "mysql", // Agrega esta líneasa
   pool: {
     max: 5,
     min: 0,
