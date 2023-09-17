@@ -3,12 +3,16 @@ const { config } = require('dotenv');
 config()
 
 module.exports = {
-    DB_HOST: process.env.DB_HOST || "localhost",
-    DB_USER: process.env.DB_USER || "root",
-    DB_PASSWORD: process.env.DB_PASSWORD || "1234",
-    DB_DATABASE: process.env.DB_DATABASE || "Clinica",
-    DB_PORT: process.env.DB_PORT || 3306,
+    host: process.env.DB_HOST || "localhost",
+    username: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD || "1234",
+    database: process.env.DB_DATABASE || "Clinica",
+    port: process.env.DB_PORT || 3306,
+    dialect: "mysql", // Agrega esta líneasa
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
+    },
 };
-
-
-

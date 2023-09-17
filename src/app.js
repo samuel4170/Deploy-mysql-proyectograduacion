@@ -4,7 +4,7 @@ const cors = require("cors");
 const sequelize = require("./db"); // Ruta corregida para importar sequelize
 const app = express();
 
-const { PORT } = require("./config/db.config"); // Ruta corregida para importar la configuración
+const { PORT } = require("./config"); // Ruta corregida para importar la configuración
 
 //dep
 app.use(cors());
@@ -41,6 +41,6 @@ require("./routers/horario.routes")(app);
 require("./routers/especialidad.routes")(app);
 
 // Establece el puerto y escucha las solicitudes
-app.listen(8080 || process.env.PORT,() => {
+app.listen(PORT || 8080, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
