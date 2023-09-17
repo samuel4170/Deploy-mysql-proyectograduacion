@@ -41,6 +41,7 @@ require("./src/routers/horario.routes")(app);
 require("./src/routers/especialidad.routes")(app);
 
 // Establece el puerto y escucha las solicitudes
+
 app.listen(PORT || 8080, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
