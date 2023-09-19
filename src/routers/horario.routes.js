@@ -6,7 +6,7 @@ module.exports = app => {
     // Crear un nuevo Horario
     router.post("/", horarios.create);
   
-    // Obtener todos los Horarios
+    // Obtener todos   los Horarios
     router.get("/", horarios.findAll);
   
     // Obtener un Horario por su IdHorario

@@ -6,7 +6,7 @@ module.exports = app => {
   // Crear un nuevo Administrador
   router.post("/", administradores.create);
 
-  // Obtener todos los Administradores
+  // Obtener todos   los Administradores
   router.get("/", administradores.findAll);
 
   // Obtener un Administrador por su IdAdministrador
