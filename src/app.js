@@ -1,10 +1,11 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const sequelize = require("./db"); // Ruta corregida para importar sequelize
+const sequelize = require("./models"); // Ruta corregida para importar sequelize
 const app = express();
 
 const { PORT } = require("./config/db.config"); // Ruta corregida para importar la configuración
+
 
 //dep
 app.use(cors());
@@ -29,8 +30,6 @@ require("./routers/medico.routes")(app);
 require("./routers/cita.routes")(app);
 // Rutas de Historial Medico
 require("./routers/historialmedico.routes")(app);
-// Rutas de Facturas
-require("./routers/factura.routes")(app);
 // Rutas de Recepcionistas
 require("./routers/recepcionista.routes")(app);
 // Rutas de Administradores
